@@ -11,12 +11,20 @@ let start = document.getElementById("start");
 // let stop = document.getElementById("stop");
 let reset = document.getElementById("reset");
 let lap = document.getElementById("laps");
+let sound = document.getElementById("tick")
+
+sound.loop = true
+
+
 
 let laplist = document.getElementById("list");
 let lapCount = 0;
 
 start.addEventListener("click", function () {
   if (running == false) {
+
+    // sound.currentTime = 0
+    sound.play()
     timer = setInterval(function () {
       seconds++;
 
@@ -39,13 +47,16 @@ start.addEventListener("click", function () {
     }, 1000);
 
     running = true;
-    start.innerText = "pause";
+     sound.pause()
+    start.innerText = "𝕻𝖆𝖚𝖘𝖊";
+    
   }
 
       else{
         clearInterval(timer)
         running = false;
-        start.innerText = "start"
+        // sound.play()
+        start.innerText = "𝕾𝖙𝖆𝖗𝖙"
       }
 });
 
@@ -54,13 +65,22 @@ lap.addEventListener("click",function(){
     if(running == true){
         lapCount ++ 
 
-        let li = document.createElement("li")
-
+        let li = document.createElement("li");
+      
         li.innerText=
         "lap" + lapCount +" - " + 
         String(hours).padStart(2,"0") + ":" +
         String(minutes).padStart(2,"0") + ":"+
         String(seconds).padStart(2,"0");
+
+          li.style.marginBottom = "1opx"
+          li.style.padding = "5px";
+          li.style.fontSize = "20px"
+          li.style.border = "1px solid black"
+          li.style.borderRadius = "10px"
+          li.style.backgroundColor = "#F2F2F2"
+          li.style.listStyle = "none"
+
 
         laplist.appendChild(li)
     }
@@ -79,7 +99,11 @@ reset.addEventListener("click",function(){
     lapCount = 0
 
     display.innerText = "𝟎𝟎:𝟎𝟎:𝟎𝟎"
-    start.innerText = "Start"
+    start.innerText = "𝕾𝖙𝖆𝖗𝖙"
 
     laplist.innerHTML= ""
+ 
+    sound.pause()
+    sound.currentTime = 0;
+
 })
