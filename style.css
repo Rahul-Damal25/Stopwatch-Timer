@@ -20,9 +20,10 @@ body {
 
 .stopwatch {
     text-align: center;
-    background-color: white;
+    background-color: aqua;
     padding: 40px;
     border-radius: 15px;
+    height: 260px;
 }
 
 #display {
