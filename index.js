@@ -23,7 +23,7 @@ let lapCount = 0;
 start.addEventListener("click", function () {
   if (running == false) {
 
-    // sound.currentTime = 0
+    sound.currentTime = 0
     sound.play()
     timer = setInterval(function () {
       seconds++;
@@ -47,12 +47,16 @@ start.addEventListener("click", function () {
     }, 1000);
 
     running = true;
-     sound.pause()
+    
     start.innerText = "𝕻𝖆𝖚𝖘𝖊";
+    
     
   }
 
       else{
+
+        sound.pause();
+        sound.currentTime = 0
         clearInterval(timer)
         running = false;
         // sound.play()
@@ -103,7 +107,8 @@ reset.addEventListener("click",function(){
 
     laplist.innerHTML= ""
  
-    sound.pause()
-    sound.currentTime = 0;
+    // sound.pause()
+    // sound.play()
+    // sound.currentTime = 0;
 
 })
